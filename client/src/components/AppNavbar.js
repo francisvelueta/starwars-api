@@ -15,7 +15,7 @@ render() {
   <div>
   <Navbar color="dark" dark expand="sm" className ="mb-5">
     <Container>
-  <NavbarBrand className="text-warning" href ="/">The Force App </NavbarBrand>
+  <NavbarBrand className="text-warning bungee" href ="/">The Force App </NavbarBrand>
   <NavbarToggler onClick = {this.toggle} />
   <Collapse isOpen = {this.state.isOpen} navbar >
   <Nav className= "ml-auto" navbar >

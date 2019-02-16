@@ -1,11 +1,13 @@
 import React,  {Component} from 'react';
 import {Container,
+        Row,
+        Col,
         Card,
         CardText,
         CardTitle,
         CardSubtitle,
         Button } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 
 class FilmsList extends Component {
@@ -24,20 +26,25 @@ render() {
   const { films } = this.state;
   return(
     <Container>
-        <TransitionGroup className="films-list">
-          { films.map(({episode_id,title, director, producer, opening_crawl })=> (
+    <h3 className="text-white">Films</h3>
+    <Row>
+
+            { films.map(({episode_id,title, director, producer, opening_crawl })=> (
             <CSSTransition key= {episode_id} timeout={500} classNames ="fade">
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="text-warning">
+            <Col  lg={4} xs ={12}>
+            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333',  height: "560px"  }} className="my-4 text-warning">
             <CardTitle>{ title }</CardTitle>
             <CardSubtitle>Episode: { episode_id }</CardSubtitle>
             <CardText>Director: { director }</CardText>
             <CardText>Producer: { producer }</CardText>
             <CardText>{ opening_crawl }</CardText>
-            <Button outline color="warning">Starships</Button>
+            <Button  outline color="warning">Starships</Button>
             </Card>
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
+            </Col>
+          </CSSTransition>
+        ))}
+
+        </Row>
     </Container>
   );
 }
