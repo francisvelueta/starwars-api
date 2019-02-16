@@ -4,8 +4,11 @@
   "description": "star wars api built with the MERN stack",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "server.js",
-    "server": "nodemon server.js"
+    "server": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +16,8 @@
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "express": "^4.16.4",
-    "mongoose": "^5.4.13"
+    "mongoose": "^5.4.13",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
