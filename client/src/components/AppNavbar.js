@@ -20,7 +20,7 @@ render() {
   <Collapse isOpen = {this.state.isOpen} navbar >
   <Nav className= "ml-auto" navbar >
     <NavItem>
-    <NavLink href ="https://github.com/francisvelueta">
+    <NavLink href ="/">
       Films
     </NavLink>
     </NavItem>
