@@ -1,4 +1,4 @@
-import { GET_FILMS, LOADING_FILMS } from '../actions/types';
+import { GET_FILMS, LOADING_FILMS, GET_FILM, LOADING_FILM  } from '../actions/types';
 
 const initialState = {
   films : [],
@@ -19,6 +19,18 @@ export default function(state = initialState, action) {
       ...state,
       loading: true
     }
+    case GET_FILM:
+    return {
+      ...state,
+      films: action.payload,
+      loading: false
+    }
+    case LOADING_FILM:
+    return {
+      ...state,
+      loading: true
+    }
+
     default:
       return state;
   }
