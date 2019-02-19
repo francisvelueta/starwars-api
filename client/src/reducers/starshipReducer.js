@@ -13,7 +13,8 @@ export default function(state = initialState, action) {
     return {
       ...state,
       starships: action.payload,
-      loading: false
+      loading: false,
+      id: action.startshipId
     }
     case LOADING_STARSHIP:
     return {

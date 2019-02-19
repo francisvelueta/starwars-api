@@ -21,7 +21,7 @@ const { movies } = this.props.movie;
         <h3 className="text-white">Starships {movies.title} </h3>
         <div id="accordion">
         { movies.starships ? movies.starships.map((url, id) => (
-              <StarshipsSummary key ={id} url ={url} id ={ id+1 }/>
+              <StarshipsSummary key={`hellohello${id}`} url ={url} id ={ id+1 }/>
           )): <Spinner color ="light"/> }
           </div>
       </Container>

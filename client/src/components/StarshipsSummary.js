@@ -17,11 +17,16 @@ constructor(props) {
   super(props);
   this.state = {
     editForm : false,
+    id: props.id,
   }
 }
 
+componentWillMount () {
+  this.props.getStarship(this.props.url, this.props.id);
+}
+
 open(url) {
-    this.props.getStarship(url);
+    this.props.getStarship(url, this.props.id);
 }
 
 formStarship() {
@@ -29,30 +34,30 @@ formStarship() {
 }
 
   render() {
-    const { starships } = this.props.starship;
+    const { starships, id} = this.props.starship;
     return(
-
-      <Card style={{ backgroundColor: '#333', borderColor: '#333' }}>
-        <CardHeader id={"heading"+this.props.id} >
+      <Card style= {{ backgroundColor: '#333', borderColor: '#333' }} >
+        <CardHeader id = {"heading"+this.props.id} >
           <h5 className="mb-1 ">
-            <button className="btn btn-link collapsed text-warning" data-toggle="collapse" data-target={"#collapse"+this.props.id} aria-expanded="false" aria-controls={"collapse"+this.props.id} onClick={()=> this.open(this.props.url)}>
+            <button className="btn btn-link collapsed text-warning" data-toggle="collapse" aria-expanded="false"  data-target={"#collapse"+this.props.id} aria-expanded="false" aria-controls={"collapse"+this.props.id} onClick={()=> this.open(this.props.url)}>
               Starship #{ this.props.id }
             </button>
           </h5>
         </CardHeader>
 
-        <div id= {"collapse"+this.props.id} className="collapse" aria-labelledby={"heading"+this.props.id} data-parent="#accordion">
-          { starships ?
-        <CardBody className= "text-white">
+        <div id= { "collapse"+ this.props.id }  className="collapse" aria-labelledby={"heading"+this.props.id} data-parent="#accordion">
+          { starships && id == this.props.id ?
+        <CardBody className= "text-white" key={`heyhey${id}`}>
             <p>Name: { starships.name } </p>
             <p>Model: { starships.model } </p>
-            <p>Max. atmosphering Speed: {starships.max_atmosphering_speed}</p>
+            <p>Max. atmosphering Speed: { starships.max_atmosphering_speed }</p>
             <Button outline color="warning" onClick ={ ()=> this.formStarship() }>Edit</Button>
             { !this.state.editForm ? null :
               <FormStarship name ={starships.name} model= {starships.model} speed ={starships.max_atmosphering_speed}></FormStarship>
-            } 
+            }
             </CardBody>
             : <Spinner color="light" /> }
+            
         </div>
       </Card>
     );
