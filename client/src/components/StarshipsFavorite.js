@@ -3,13 +3,22 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { connect } from 'react-redux';
-import { getFavStarships } from './../actions/favoritesActions';
+import { getFavStarships, deleteStarship } from './../actions/favoritesActions';
 import Proptypes from 'prop-types';
 
 class StarshipsFavorite extends Component {
 
   componentDidMount() {
     this.props.getFavStarships();
+  }
+
+
+  deleteStarship (id) {
+    let response = window.confirm("Are you shore delete the starship?");
+    if(response === true ) {
+      this.props.deleteStarship(id);
+    }
+
   }
 
   render() {
@@ -21,18 +30,18 @@ class StarshipsFavorite extends Component {
         <TransitionGroup className="shopping-list">
             {favstarships.map(({_id, name, model, speed}) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem>
-                  <Button
-                    className="remove-btn"
-                    color="danger"
-                    size="sm"
-                    >&times;</Button>
-                  <p>ID: {_id } </p>
+                <ListGroupItem className="text-warning" style={{ backgroundColor: '#333', borderColor: '#333' }}><p className="form-text text-muted">Id: {_id } </p>
                   <p>Name: {name}</p>
                   <p>Model: {model}</p>
                   <p>Speed: {speed}</p>
+                    <Button
+                    className="remove-btn"
+                    color="danger"
+                    size="sm"
+                    onClick={()=> this.deleteStarship(_id)}
+                    ><i className="fas fa-trash-alt"></i></Button>
 
-                </ListGroupItem>
+                  </ListGroupItem>
               </CSSTransition>
             ))}
             </TransitionGroup>
@@ -45,10 +54,11 @@ class StarshipsFavorite extends Component {
 
 StarshipsFavorite.propTypes = {
   getFavStarships: Proptypes.func.isRequired,
+  deleteStarship: Proptypes.func.isRequired,
   favstarship: Proptypes.object.isRequired
 }
 const mapStateToProps = state => ({
   favstarship: state.favstarship
 })
 
-export default connect(mapStateToProps, {getFavStarships})(StarshipsFavorite);
+export default connect(mapStateToProps, {getFavStarships, deleteStarship})(StarshipsFavorite);

@@ -1,4 +1,4 @@
-import { GET_STARSHIPFAV, STARSHIPFAV_LOADING, ADD_STARSHIPFAV  } from '../actions/types';
+import { GET_STARSHIPFAV, STARSHIPFAV_LOADING, ADD_STARSHIPFAV, DELETE_STARSHIPFAV  } from '../actions/types';
 
 const initialState = {
   favstarships : [],
@@ -19,6 +19,12 @@ export default function(state = initialState, action) {
     ...state,
     favstarships: [action.payload, ...state.favstarships]
   }
+
+  case DELETE_STARSHIPFAV:
+   return {
+     ...state,
+     favstarships: state.favstarships.filter(favstarship => favstarship._id !== action.payload)
+   }
     case STARSHIPFAV_LOADING:
     return {
       ...state,

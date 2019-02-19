@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_STARSHIPFAV, STARSHIPFAV_LOADING, ADD_STARSHIPFAV } from './types';
+import { GET_STARSHIPFAV, STARSHIPFAV_LOADING, ADD_STARSHIPFAV, DELETE_STARSHIPFAV } from './types';
 
 export const getFavStarships = () => dispatch => {
 dispatch(setStarshipsLoading());
@@ -21,6 +21,14 @@ axios
 }))
 };
 
+export const deleteStarship = id => dispatch => {
+axios
+.delete(`/api/starships/${id}`)
+.then(res => dispatch({
+  type: DELETE_STARSHIPFAV,
+  payload: id
+}))
+};
 
 export const setStarshipsLoading = () => {
     return {
