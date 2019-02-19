@@ -8,6 +8,9 @@ import { Row,
   Input,
   Button } from 'reactstrap';
 
+  import { connect } from 'react-redux';
+import { addStarship } from './../actions/favoritesActions';
+
 class FormStarship extends Component {
   constructor(props) {
     super(props)
@@ -22,6 +25,7 @@ class FormStarship extends Component {
   }
 
 sendInfo() {
+
 if(this.state.name === "" || this.state.name === " ") {
   this.setState({inputvalidatename: 'is-invalid'})
 } else if (this.state.model === "" || this.state.model === " ") {
@@ -36,9 +40,17 @@ if(this.state.name === "" || this.state.name === " ") {
   this.setState({inputvalidatemodel: ''});
   this.setState({inputvalidatespeed: ''});
 
-  
+const newStarship = {
+  name: this.state.name,
+  model: this.state.model,
+  speed: this.state.speed
 }
 
+// Add item via addStarship action
+
+  this.props.addStarship(newStarship);
+  alert('Starship Added in Favorites');
+}
 
 }
 
@@ -83,4 +95,8 @@ if(this.state.name === "" || this.state.name === " ") {
   }
 }
 
-export default FormStarship;
+const mapStateToProps = state => ({
+  favstarship: state.favstarship
+})
+
+export default connect(mapStateToProps, { addStarship })(FormStarship);
