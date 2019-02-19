@@ -3,18 +3,28 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Button } from 'reactstrap';
+  Button
+ } from 'reactstrap';
   import Proptypes from 'prop-types';
   import { connect } from 'react-redux';
   import { getStarship } from './../actions/starshipsActions';
 
-class StarshipsSummary extends Component {
+  import FormStarship from './FormStarship';
 
+class StarshipsSummary extends Component {
+constructor(props) {
+  super(props);
+  this.state = {
+    editForm : false,
+  }
+}
 
 open(url) {
-
     this.props.getStarship(url);
+}
 
+formStarship() {
+  this.setState ({editForm: !this.state.editForm})
 }
 
   render() {
@@ -24,7 +34,7 @@ open(url) {
         <CardHeader id={"heading"+this.props.id} >
           <h5 className="mb-1 ">
             <button className="btn btn-link collapsed text-warning" data-toggle="collapse" data-target={"#collapse"+this.props.id} aria-expanded="false" aria-controls={"collapse"+this.props.id} onClick={()=> this.open(this.props.url)}>
-              Starship #{this.props.id}
+              Starship #{ this.props.id }
             </button>
           </h5>
         </CardHeader>
@@ -33,13 +43,15 @@ open(url) {
           <CardBody className= "text-white">
             <p>Name: { starships.name } </p>
             <p>Model: { starships.model } </p>
-            <p>Manufacter: {starships.manufacturer}</p>
+            <p>Max. atmosphering Speed: {starships.max_atmosphering_speed}</p>
+            <Button outline color="warning" onClick ={ ()=> this.formStarship() }>Edit</Button>
+            { !this.state.editForm ? null :
+              <FormStarship name ={starships.name} model= {starships.model} speed ={starships.max_atmosphering_speed}></FormStarship>
+            }
           </CardBody>
         </div>
       </Card>
-
     );
-
   }
 }
 
