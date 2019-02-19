@@ -25,7 +25,7 @@ render() {
     </NavLink>
     </NavItem>
     <NavItem>
-    <NavLink href ="https://github.com/francisvelueta">
+    <NavLink href ="/films/starships">
       Favorites Starships
     </NavLink>
     </NavItem>

@@ -16,3 +16,8 @@ code {
 .right-line {
   float: right;
 }
+
+
+.remove-btn {
+  margin-right:  0.5rem;
+}
