@@ -6,7 +6,7 @@ import {Container,
         CardText,
         CardTitle,
         CardSubtitle,
-        Button } from 'reactstrap';
+        Button, Spinner  } from 'reactstrap';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getFilms } from './../actions/filmActions';
@@ -32,9 +32,7 @@ render() {
     <Container>
     <h3 className="text-white">Films</h3>
     <Row>
-            {
-
-          films.map(({episode_id, title, director, producer, opening_crawl, url })=> (
+            { films ? films.map(({episode_id, title, director, producer, opening_crawl, url })=> (
             <CSSTransition key= {episode_id} timeout={500} classNames ="fade">
             <Col  lg={4} xs ={12}>
             <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333',  height: "560px"  }} className="my-4 text-warning">
@@ -47,7 +45,7 @@ render() {
             </Card>
             </Col>
           </CSSTransition>
-        ))}
+        )): <Spinner color = "light"/> }
         </Row>
     </Container>
   );

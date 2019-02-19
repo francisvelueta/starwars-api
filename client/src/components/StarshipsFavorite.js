@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Container, ListGroup, ListGroupItem, Button, Spinner } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ class StarshipsFavorite extends Component {
         <h3 className="text-white">Starship Favorites</h3>
       <ListGroup>
         <TransitionGroup className="shopping-list">
-            {favstarships.map(({_id, name, model, speed}) => (
+            {favstarships ? favstarships.map(({_id, name, model, speed}) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem className="text-warning" style={{ backgroundColor: '#333', borderColor: '#333' }}><p className="form-text text-muted">Id: {_id } </p>
                   <p>Name: {name}</p>
@@ -43,7 +43,7 @@ class StarshipsFavorite extends Component {
 
                   </ListGroupItem>
               </CSSTransition>
-            ))}
+            )): <Spinner color="light"/>}
             </TransitionGroup>
       </ListGroup>
       </Container>

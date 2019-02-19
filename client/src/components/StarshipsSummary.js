@@ -3,7 +3,8 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Button
+  Button,
+  Spinner
  } from 'reactstrap';
   import Proptypes from 'prop-types';
   import { connect } from 'react-redux';
@@ -30,6 +31,7 @@ formStarship() {
   render() {
     const { starships } = this.props.starship;
     return(
+
       <Card style={{ backgroundColor: '#333', borderColor: '#333' }}>
         <CardHeader id={"heading"+this.props.id} >
           <h5 className="mb-1 ">
@@ -40,15 +42,17 @@ formStarship() {
         </CardHeader>
 
         <div id= {"collapse"+this.props.id} className="collapse" aria-labelledby={"heading"+this.props.id} data-parent="#accordion">
-          <CardBody className= "text-white">
+          { starships ?
+        <CardBody className= "text-white">
             <p>Name: { starships.name } </p>
             <p>Model: { starships.model } </p>
             <p>Max. atmosphering Speed: {starships.max_atmosphering_speed}</p>
             <Button outline color="warning" onClick ={ ()=> this.formStarship() }>Edit</Button>
             { !this.state.editForm ? null :
               <FormStarship name ={starships.name} model= {starships.model} speed ={starships.max_atmosphering_speed}></FormStarship>
-            }
-          </CardBody>
+            } 
+            </CardBody>
+            : <Spinner color="light" /> }
         </div>
       </Card>
     );

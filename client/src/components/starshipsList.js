@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Spinner } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getFilm } from './../actions/filmActions';
 import { getStarship } from './../actions/starshipsActions';
@@ -18,11 +18,11 @@ render() {
 const { movies } = this.props.movie;
     return(
       <Container>
-        <h3 className="text-white">{movies.title} </h3>
+        <h3 className="text-white">Starships {movies.title} </h3>
         <div id="accordion">
         { movies.starships ? movies.starships.map((url, id) => (
               <StarshipsSummary key ={id} url ={url} id ={ id+1 }/>
-          )): null }
+          )): <Spinner color ="light"/> }
           </div>
       </Container>
   )
