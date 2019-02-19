@@ -34,8 +34,7 @@ render() {
     <Row>
             {
 
-              films.map(({episode_id, title, director, producer, opening_crawl, url })=> (
-
+          films.map(({episode_id, title, director, producer, opening_crawl, url })=> (
             <CSSTransition key= {episode_id} timeout={500} classNames ="fade">
             <Col  lg={4} xs ={12}>
             <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333',  height: "560px"  }} className="my-4 text-warning">

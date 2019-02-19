@@ -1,25 +1,25 @@
-import { GET_FILMS, LOADING_FILMS  } from '../actions/types';
+import { GET_FILM, LOADING_FILM  } from '../actions/types';
 
 const initialState = {
-  films : [],
+  movies : [],
   loading: false
 }
 
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_FILMS:
+
+    case GET_FILM:
     return {
       ...state,
-      films: action.payload,
+      movies: action.payload,
       loading: false
     }
-    case LOADING_FILMS:
+    case LOADING_FILM:
     return {
       ...state,
       loading: true
     }
-
 
     default:
       return state;

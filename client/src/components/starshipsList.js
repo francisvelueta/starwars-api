@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getFilm } from './../actions/filmActions';
+import { getStarship } from './../actions/starshipsActions';
 import Proptypes from 'prop-types';
 
 import StarshipsSummary from './StarshipsSummary';
@@ -12,38 +13,30 @@ componentDidMount() {
   this.props.getFilm(this.props.match.params.id);
 
 }
-componentWillMount() {
-  this.props.getFilm(this.props.match.params.id);
 
-}
 render() {
-const { films } = this.props.film;
+const { movies } = this.props.movie;
     return(
       <Container>
-        <h3 className="text-white"> Starships - {films.title} </h3>
-        <Row>
-        { films.starships ? films.starships.map((id, e) => (
-          <Col lg= {4} xs ={12} key={id}>
-          <StarshipsSummary  />
-          </Col>
-        ))
-         : null}
-         </Row>
-        </Container>
+        <h3 className="text-white"> Starships - {movies.title} </h3>
+        <div id="accordion">
+        { movies.starships ? movies.starships.map((url, id) => (
+              <StarshipsSummary key ={id} url ={url} id ={ id+1 }/>
+          )): null }
+          </div>
+      </Container>
   )
  }
-
-
 
 }
 
 starshipsList.propTypes = {
   getFilm: Proptypes.func.isRequired,
-  film: Proptypes.object.isRequired
+  movie: Proptypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-  film: state.film
+  movie: state.movie,
 })
 
-export default connect(mapStateToProps, { getFilm })(starshipsList);
+export default connect(mapStateToProps, { getFilm, getStarship })(starshipsList);
