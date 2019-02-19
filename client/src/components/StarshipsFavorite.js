@@ -14,7 +14,7 @@ class StarshipsFavorite extends Component {
 
 
   deleteStarship (id) {
-    let response = window.confirm("Are you shore delete the starship?");
+    let response = window.confirm("Are you sure to delete the starship?");
     if(response === true ) {
       this.props.deleteStarship(id);
     }
