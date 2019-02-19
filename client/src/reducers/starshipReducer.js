@@ -1,10 +1,12 @@
 import { GET_STARSHIP, LOADING_STARSHIP  } from '../actions/types';
 
+// initial state
 const initialState = {
   starships : [],
   loading: false
 }
 
+// Add Reducers
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_STARSHIP:

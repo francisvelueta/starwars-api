@@ -1,10 +1,12 @@
 import { GET_STARSHIPFAV, STARSHIPFAV_LOADING, ADD_STARSHIPFAV, DELETE_STARSHIPFAV  } from '../actions/types';
 
+// initial state
 const initialState = {
   favstarships : [],
   loading: false
 }
 
+// Add Reducers
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_STARSHIPFAV:

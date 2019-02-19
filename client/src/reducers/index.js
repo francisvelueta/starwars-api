@@ -4,6 +4,8 @@ import starshipReducer from './starshipReducer';
 import movieReducer from './movieReducer';
 import favstarshipReducer from './favstarshipReducer'
 
+
+// Combine Reducers
 export default combineReducers({
   film: filmReducer,
   movie: movieReducer,

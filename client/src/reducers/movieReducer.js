@@ -1,11 +1,12 @@
 import { GET_FILM, LOADING_FILM  } from '../actions/types';
 
+// initial state
 const initialState = {
   movies : [],
   loading: false
 }
 
-
+// Add Reducers
 export default function(state = initialState, action) {
   switch (action.type) {
 

@@ -29,11 +29,16 @@ render() {
       Favorites Starships
     </NavLink>
     </NavItem>
+    <NavItem>
+    <NavLink href ="https://github.com/francisvelueta/starwars-api">
+      <i className="fab fa-github-alt"></i>
+    </NavLink>
+    </NavItem>
   </Nav>
 </Collapse>
 </Container>
-  </Navbar>
-  </div>
+</Navbar>
+</div>
 );
 }
 

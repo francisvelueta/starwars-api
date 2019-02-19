@@ -31,9 +31,9 @@ class StarshipsFavorite extends Component {
             {favstarships ? favstarships.map(({_id, name, model, speed}) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem className="text-warning" style={{ backgroundColor: '#333', borderColor: '#333' }}><p className="form-text text-muted">Id: {_id } </p>
-                  <p>Name: {name}</p>
-                  <p>Model: {model}</p>
-                  <p>Speed: {speed}</p>
+                  <p>Name: { name }</p>
+                  <p>Model: { model }</p>
+                  <p>Speed: { speed }</p>
                     <Button
                     className="remove-btn"
                     color="danger"
