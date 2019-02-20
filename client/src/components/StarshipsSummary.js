@@ -21,7 +21,7 @@ constructor(props) {
   }
 }
 
-componentWillMount () {
+componentDidMount () {
   this.props.getStarship(this.props.url, this.props.id);
 }
 
@@ -39,14 +39,14 @@ formStarship() {
       <Card style= {{ backgroundColor: '#333', borderColor: '#333' }} >
         <CardHeader id = {"heading"+this.props.id} >
           <h5 className="mb-1 ">
-            <button className="btn btn-link collapsed text-warning" data-toggle="collapse" aria-expanded="false"  data-target={"#collapse"+this.props.id} aria-expanded="false" aria-controls={"collapse"+this.props.id} onClick={()=> this.open(this.props.url)}>
+            <button className="btn btn-link collapsed text-warning" data-toggle="collapse" aria-expanded="false"  data-target={"#collapse"+this.props.id} aria-controls={"collapse"+this.props.id} onClick={()=> this.open(this.props.url)}>
               Starship #{ this.props.id }
             </button>
           </h5>
         </CardHeader>
 
         <div id= { "collapse"+ this.props.id }  className="collapse" aria-labelledby={"heading"+this.props.id} data-parent="#accordion">
-          { starships && id == this.props.id ?
+          { starships && id === this.props.id ?
         <CardBody className= "text-white" key={`heyhey${id}`}>
             <p>Name: { starships.name } </p>
             <p>Model: { starships.model } </p>
@@ -57,7 +57,7 @@ formStarship() {
             }
             </CardBody>
             : <Spinner color="light" /> }
-            
+
         </div>
       </Card>
     );
