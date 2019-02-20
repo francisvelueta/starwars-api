@@ -10,7 +10,7 @@ Si eres fan de Star wars esta página web te va a gustar, The force app es un ca
 
 1. Navegador web como Chrome, Firefox o IE
 2. Internet
-3. Difruta
+3. Disfruta
 
 ## Uso
 
